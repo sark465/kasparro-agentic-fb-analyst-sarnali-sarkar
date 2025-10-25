@@ -1,0 +1,50 @@
+# Makefile for Kasparro Agentic FB Analyst
+
+# --------------------------
+# Config
+# --------------------------
+PYTHON=python
+VENV_NAME=env1
+DATA_CSV=D:/VS_CODE_PROJECTS/kasparro-agentic-fb-analyst-sarnali-sarkar/synthetic_fb_ads_undergarments.csv
+
+# --------------------------
+# Virtual Environment
+# --------------------------
+.PHONY: env
+env:
+	@echo "Creating virtual environment..."
+	$(PYTHON) -m venv $(VENV_NAME)
+	@echo "Activating environment and upgrading pip, setuptools, wheel..."
+	$(VENV_NAME)\Scripts\activate && \
+	pip install --upgrade pip setuptools wheel
+
+# --------------------------
+# Install Dependencies
+# --------------------------
+.PHONY: install
+install:
+	@echo "Installing required Python packages..."
+	$(VENV_NAME)\Scripts\activate && pip install -r requirements.txt
+
+# --------------------------
+# Run the main script
+# --------------------------
+.PHONY: run
+run:
+	@echo "Running Kasparro analysis..."
+	$(VENV_NAME)\Scripts\activate && $(PYTHON) src/run.py "Analyze ROAS drop in last 7 days"
+
+# --------------------------
+# Clean temporary files
+# --------------------------
+.PHONY: clean
+clean:
+	@echo "Cleaning pycache and logs..."
+	del /s /q __pycache__ *.pyc
+	del /s /q logs\*.*
+
+# --------------------------
+# Full setup & run
+# --------------------------
+.PHONY: all
+all: env install run
