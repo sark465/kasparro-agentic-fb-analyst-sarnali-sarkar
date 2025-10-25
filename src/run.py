@@ -6,9 +6,28 @@ from src.utils.io_utils import save_json, ensure_dir
 import os
 from datetime import datetime
 import json
+import sys
 
-LOG_PATH = "logs/run_log.json"
 CONFIG_PATH = "config/config.yaml"
+OBSERVABILITY_DIR = "reports/observability/logs"
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+def log_run(query, data_summary, hypos, evaluations, creatives):
+    """Save run inputs/outputs to a JSON file for observability."""
+    ensure_dir(OBSERVABILITY_DIR)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = os.path.join(OBSERVABILITY_DIR, f"run_{timestamp}.json")
+    log_data = {
+        "timestamp": timestamp,
+        "query": query,
+        "data_summary": data_summary,
+        "hypotheses": hypos,
+        "evaluations": evaluations,
+        "creatives": creatives
+    }
+    with open(log_file, "w", encoding="utf-8") as f:
+        json.dump(log_data, f, indent=4)
+    print(f"Observability log saved to {log_file}")
 
 def main(query):
     cfg = data_agent.load_config(CONFIG_PATH)
@@ -26,12 +45,10 @@ def main(query):
     evaluations = []
     for h in hypos:
         res = ev.evaluate_hypothesis(h, df, cfg)
-        # attach statement for readability
         res["statement"] = h["statement"]
         evaluations.append(res)
 
-    # Identify low CTR campaigns to feed creative generator
-    # Simple heuristic: overall campaign CTR < 1%
+    # Identify low CTR campaigns for creative generator
     low_ctr_campaigns = []
     for c in data_summary.get("by_campaign", []):
         impressions = c.get("impressions", 0)
@@ -60,8 +77,11 @@ def main(query):
         f.write("## Top Hypotheses\n")
         for h in hypos:
             f.write(f"- {h['hypothesis_id']}: {h['statement']} (confidence: {h['confidence']})\n")
+
     print(f"Outputs written to {output_dir}")
 
+    # Save observability log
+    log_run(query, data_summary, hypos, evaluations, creatives)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
