@@ -8,32 +8,31 @@ kasparro-agentic-fb-analyst-sarnali-sarkar/
 ├─ README.md
 ├─ requirements.txt
 ├─ config/
-│  └─ config.yaml
+│ └─ config.yaml
 ├─ data/
-│  └─ synthetic_fb_ads_undergarments.csv   # (you said dataset path is local; we'll reference it)
+│ └─ synthetic_fb_ads_undergarments.csv # Local dataset path
 ├─ prompts/
-│  ├─ planner_prompt.md
-│  ├─ insight_prompt.md
-│  ├─ evaluator_prompt.md
-│  └─ creative_prompt.md
+│ ├─ planner_prompt.md
+│ ├─ insight_prompt.md
+│ ├─ evaluator_prompt.md
+│ └─ creative_prompt.md
 ├─ src/
-│  ├─ run.py
-│  ├─ agents/
-│  │  ├─ planner.py
-│  │  ├─ data_agent.py
-│  │  ├─ insight_agent.py
-│  │  ├─ evaluator.py
-│  │  └─ creative_generator.py
-│  └─ utils/
-│     └─ io_utils.py
+│ ├─ run.py
+│ ├─ agents/
+│ │ ├─ planner.py
+│ │ ├─ data_agent.py
+│ │ ├─ insight_agent.py
+│ │ ├─ evaluator.py
+│ │ └─ creative_generator.py
+│ └─ utils/
+│ └─ io_utils.py
 ├─ reports/
-│  ├─ report.md
-│  ├─ insights.json
-│  └─ creatives.json
+│ ├─ report.md
+│ ├─ insights.json
+│ └─ creatives.json
 ├─ tests/
-│  └─ test_evaluator.py
-└─ Makefile  (optional)
-
+│ └─ test_evaluator.py
+└─ Makefile (optional)
 
 ## Quick Start (Windows)
 
