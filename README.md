@@ -115,7 +115,8 @@ Save Langfuse screenshots or JSON logs in reports/observability/ to track model 
 
 13. **Release**
 
-Tag release as v1.0 in GitHub and provide the release link.
+Tag release as v1.0 in GitHub and the release link is : https://github.com/sark465/kasparro-agentic-fb-analyst-sarnali-sarkar/releases/tag/v1.0
+
 
 14. **Self-Review**
 
