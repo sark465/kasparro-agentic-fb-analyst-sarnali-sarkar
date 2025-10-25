@@ -67,6 +67,40 @@ The system is designed as a multi-agent architecture to analyze Facebook Ads per
 │creatives.json│    │ report.md     │
 └──────────────┘    └───────────────┘
 
+**Key Highlights:**
+
+## Agentic Architecture
+- Planner Agent decomposes user queries into structured subtasks.
+- Data Agent handles CSV loading, summarization, and basic aggregations.
+- Insight Agent generates hypotheses with confidence scores.
+- Evaluator Agent validates hypotheses quantitatively with simple thresholds.
+- Creative Generator suggests new creative messages for low-CTR campaigns.
+
+## Design Decisions & Tradeoffs
+- **Separation of Concerns:** Each agent focuses on a specific role to maintain modularity.
+- **Data Summarization:** Only summaries passed to Insight Agent instead of full CSV to reduce overhead.
+- **Confidence & Validation:** Simplified numeric thresholds used for hypothesis evaluation for clarity and reproducibility.
+- **Creative Generation:** Variants are grounded in existing campaign messages; no external model required to keep the system lightweight.
+- **Logging & Observability:** JSON run logs stored in `logs/` for traceability.
+
+## Configuration & Reproducibility
+- `config/config.yaml` defines thresholds, seeds, and output paths.
+- Randomness is seeded for reproducible results.
+- Small sample dataset provided for quick testing.
+
+## Prompts & Templates
+- All prompts stored as separate `.md` files in `prompts/` for reusability and maintainability.
+
+## Outputs
+- `reports/report.md` — human-readable summary.
+- `reports/insights.json` — structured hypotheses and evaluation.
+- `reports/creatives.json` — recommended creative messages.
+
+## Remaining Notes
+- Evaluator tests (`tests/test_evaluator.py`) should be verified to pass before merging.
+
+This PR ensures full transparency of design choices, implementation reasoning, and project reproducibility for version 1.0.
+
 7. **Notes**
 
 a. Each agent communicates via structured JSON outputs, not raw CSV.
