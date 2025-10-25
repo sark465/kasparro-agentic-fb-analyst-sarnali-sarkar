@@ -4,34 +4,37 @@ Multi-agent AI system for diagnosing Facebook Ads performance and generating cre
 # Project structure (create these files & folders)
 
 kasparro-agentic-fb-analyst-sarnali-sarkar/
+
 ├─ .gitignore
 ├─ README.md
+├─ SELF_REVIEW.md       # added
+├─ agent_graph.md       # added
 ├─ requirements.txt
 ├─ config/
-│ └─ config.yaml
+│   └─ config.yaml
 ├─ data/
-│ └─ synthetic_fb_ads_undergarments.csv # Local dataset path
+│   └─ synthetic_fb_ads_undergarments.csv
 ├─ prompts/
-│ ├─ planner_prompt.md
-│ ├─ insight_prompt.md
-│ ├─ evaluator_prompt.md
-│ └─ creative_prompt.md
+│   ├─ planner_prompt.md
+│   ├─ insight_prompt.md
+│   ├─ evaluator_prompt.md
+│   └─ creative_prompt.md
 ├─ src/
-│ ├─ run.py
-│ ├─ agents/
-│ │ ├─ planner.py
-│ │ ├─ data_agent.py
-│ │ ├─ insight_agent.py
-│ │ ├─ evaluator.py
-│ │ └─ creative_generator.py
-│ └─ utils/
-│ └─ io_utils.py
+│   ├─ run.py
+│   ├─ agents/
+│   │   ├─ planner.py
+│   │   ├─ data_agent.py
+│   │   ├─ insight_agent.py
+│   │   ├─ evaluator.py
+│   │   └─ creative_generator.py
+│   └─ utils/
+│       └─ io_utils.py
 ├─ reports/
-│ ├─ report.md
-│ ├─ insights.json
-│ └─ creatives.json
+│   ├─ report.md
+│   ├─ insights.json
+│   └─ creatives.json
 ├─ tests/
-│ └─ test_evaluator.py
+│   └─ test_evaluator.py
 └─ Makefile (optional)
 
 ## Quick Start (Windows)
@@ -111,7 +114,7 @@ reports/creatives.json — Recommended creative messages
 
 12. **Observability**
 
-Save Langfuse screenshots or JSON logs in reports/observability/ to track model performance.
+Saved JSON logs in reports/observability/ to track model performance.
 
 13. **Release**
 
