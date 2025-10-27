@@ -1,0 +1,15 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis_id": "H_lowctr_ OMEN COTTON CLASSICS",
+      "statement": "Campaign  OMEN COTTON CLASSICS has low CTR (possible creative fatigue)",
+      "rationale": "Observed CTR ~ 0.0076",
+      "expected_signals": [
+        "low_ctr",
+        "high_impressions",
+        "low_clicks"
+      ],
+      "confidence": 0.5
+    }
+  ]
+}

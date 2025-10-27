@@ -1,38 +1,26 @@
 # Agent Graph: Kasparro Agentic FB Analyst
 
 ## Overview
-The system is designed as a multi-agent architecture to analyze Facebook Ads performance, generate insights, validate hypotheses, and recommend new creative messages for low-CTR campaigns.  
-
-## Agents and Roles
-
-1. **Planner Agent**
-   - **Input:** User query (e.g., "Analyze ROAS drop in last 7 days")
-   - **Output:** Decomposed subtasks for other agents
-   - **Role:** Organizes workflow and ensures structured analysis
-
-2. **Data Agent**
-   - **Input:** CSV dataset
-   - **Output:** Data summaries (metrics, CTR, ROAS, campaign stats)
-   - **Role:** Loads data, computes key metrics, prepares summary for Insight Agent
-
-3. **Insight Agent**
-   - **Input:** Data summary from Data Agent
-   - **Output:** Hypotheses explaining observed patterns
-   - **Role:** Generates structured, JSON-formatted hypotheses
-
-4. **Evaluator Agent**
-   - **Input:** Hypotheses from Insight Agent, raw data from Data Agent
-   - **Output:** Quantitative evaluation of hypotheses (confidence scores)
-   - **Role:** Validates hypotheses using thresholds in `config.yaml`
-
-5. **Creative Generator**
-   - **Input:** Low-CTR campaigns identified from Evaluator output
-   - **Output:** Suggested creative messages (headlines, CTAs, copy)
-   - **Role:** Provides actionable recommendations to improve ad performance
+This system uses a modular, multi-agent framework for marketing analytics.  
+It performs **data summarization**, **insight generation**, **evaluation**, and **creative ideation**, with a new **reflection/replan** loop added for adaptive learning.
 
 ---
 
-6. ## Data Flow Diagram
+## 🧩 Agents and Roles
+
+| Agent | Input | Output | Description |
+|--------|--------|---------|-------------|
+| **Planner Agent** | User query | Subtask list | Decomposes query into subtasks |
+| **Data Agent** | CSV data | Summaries (CTR, ROAS, spend) | Loads, cleans, and aggregates data |
+| **Insight Agent** | Data summary | Hypotheses (JSON) | Generates structured hypotheses |
+| **Evaluator Agent** | Hypotheses, Data | Evaluation metrics, Confidence | Quantitatively validates hypotheses |
+| **Creative Generator** | Low-CTR campaigns | Grounded creative ideas | Suggests data-informed ad messages |
+| **Reflection Module (New)** | Evaluations | Replan triggers | Logs low-confidence cases for next planning cycle |
+
+--- 
+
+
+1. ## Data Flow Diagram
 
 ```text
          ┌────────────┐
@@ -67,7 +55,7 @@ The system is designed as a multi-agent architecture to analyze Facebook Ads per
 │creatives.json│    │ report.md     │
 └──────────────┘    └───────────────┘
 
-**Key Highlights:**
+2.** Key Highlights:**
 
 ## Agentic Architecture
 - Planner Agent decomposes user queries into structured subtasks.
@@ -101,7 +89,7 @@ The system is designed as a multi-agent architecture to analyze Facebook Ads per
 
 This PR ensures full transparency of design choices, implementation reasoning, and project reproducibility for version 1.0.
 
-7. **Notes**
+3. **Notes**
 
 a. Each agent communicates via structured JSON outputs, not raw CSV.
 
