@@ -1,15 +1,22 @@
-Creative Improvement Generator
+# Creative Improvement Generator
 ------------------------------
-Input: low_ctr_campaigns (list) and sample creative messages
 
-Output JSON:
+## Input:
+- `low_ctr_campaigns` (list of campaigns with CTR < threshold)
+- `sample_creative_messages` (existing ad copy, headlines, and CTAs)
+
+## Output JSON Schema
+```json
 [
   {
-    "campaign_name": "...",
+    "campaign_name": "string",
     "creative_recommendations": [
-       {"headline":"...", "body":"...", "cta":"...", "rationale":"..."}
+      {
+        "headline": "string",
+        "body": "string",
+        "cta": "string",
+        "rationale": "string"
+      }
     ]
   }
 ]
-
-Guidance: ground new creatives in existing messaging but vary hooks and CTAs. Provide multiple variants per campaign.

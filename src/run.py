@@ -39,8 +39,7 @@ def main(query):
     plan = planner.plan_from_query(query)
 
     # Insight generation
-    hypos = insight_agent.generate_hypotheses(data_summary)
-
+    hypos = insight_agent.generate_hypotheses(data_summary, cfg)
     # Evaluation
     evaluations = []
     for h in hypos:
@@ -82,6 +81,20 @@ def main(query):
 
     # Save observability log
     log_run(query, data_summary, hypos, evaluations, creatives)
+    # --- Reflection / Replan Logging ---
+    reflection_note = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "summary": "Evaluator confidence analyzed. Replan triggered for low-confidence hypotheses.",
+        "low_confidence_cases": [
+            h["hypothesis_id"] for h in evaluations if h.get("confidence", 1) < cfg.get("confidence_min", 0.6)
+        ]
+    }
+    reflection_log_path = os.path.join(output_dir, "reflection_log.json")
+    with open(reflection_log_path, "w", encoding="utf-8") as f:
+        json.dump(reflection_note, f, indent=4)
+
+    print(f"Reflection log saved to {reflection_log_path}")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

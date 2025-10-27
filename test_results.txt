@@ -1,0 +1,1 @@
+Evaluator output: {'hypothesis_id': 'H_lowctr_C1', 'result': 'supported', 'evidence': {'ctr': np.float64(0.005333333333333333), 'impressions': 1500, 'clicks': 8}, 'confidence': 0.7}

@@ -1,4 +1,3 @@
-
 {
   "creatives": [
     {
@@ -18,24 +17,6 @@
         }
       ]
     },
-  {
-    "campaign_name": "ComfortWear_Unders",
-    "original_message": "Comfortable fit",
-    "creative_recommendations": [
-      {
-        "headline": "Breathe Easy All Day",
-        "body": "Soft cotton that moves with you. Feel the comfort, not the seams.",
-        "cta": "Shop Comfort Now",
-        "rationale": "Shifts focus from generic fit to all-day comfort experience."
-      },
-      {
-        "headline": "Everyday Confidence Starts Here",
-        "body": "Premium stretch fabric designed for real movement and real comfort.",
-        "cta": "Try Your Pair Today",
-        "rationale": "Connects comfort to emotional appeal of confidence."
-      }
-    ]
-   },
     {
       "campaign_name": "-omen-Studio Sports",
       "creative_recommendations": [
@@ -1890,5 +1871,4 @@
       ]
     }
   ]
-  
 }

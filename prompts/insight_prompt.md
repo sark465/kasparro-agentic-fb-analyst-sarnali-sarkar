@@ -1,14 +1,14 @@
-Insight Agent
--------------
-Input: data_summary
+# Insight Agent Prompt
 
-Output: JSON list of candidate hypotheses, each with:
+## Input
+`data_summary` — aggregate and per-campaign metrics
+
+## Output JSON Schema
+```json
 {
- "hypothesis_id": "H1",
- "statement": "...",
- "rationale": "...",
- "expected_signals": ["ctr_drop", "impression_spike", "audience_overlap"],
- "confidence": 0.0
+  "hypothesis_id": "string",
+  "statement": "string",
+  "rationale": "string",
+  "expected_signals": ["string"],
+  "confidence": "float (0-1)"
 }
-
-Guidance: use temporal comparisons (last 7 days vs previous 28 days), segment by campaign/adset/creative_type.

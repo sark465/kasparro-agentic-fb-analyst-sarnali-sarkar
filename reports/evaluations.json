@@ -1,6 +1,17 @@
 {
   "evaluations": [
     {
+      "hypothesis_id": "H_lowctr_ OMEN  Cotton  Classics",
+      "result": "not_supported",
+      "evidence": {
+        "ctr": 0.010109198798718046,
+        "impressions": 220032274,
+        "clicks": 2224350
+      },
+      "confidence": 0.7,
+      "statement": "Campaign  OMEN  Cotton  Classics has low CTR (possible creative fatigue)"
+    },
+    {
       "hypothesis_id": "H_lowctr_ OMEN COTTON CLASSICS",
       "result": "not_supported",
       "evidence": {
@@ -10,6 +21,17 @@
       },
       "confidence": 0.7,
       "statement": "Campaign  OMEN COTTON CLASSICS has low CTR (possible creative fatigue)"
+    },
+    {
+      "hypothesis_id": "H_lowctr_ en Premium Modal",
+      "result": "not_supported",
+      "evidence": {
+        "ctr": 0.013056424972775704,
+        "impressions": 808329464,
+        "clicks": 10553893
+      },
+      "confidence": 0.7,
+      "statement": "Campaign  en Premium Modal has low CTR (possible creative fatigue)"
     }
   ]
 }
